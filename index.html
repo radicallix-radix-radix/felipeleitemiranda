@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Felipe Leite Miranda</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Consolas, monospace;
+    color:#d9d6b8;
+
+    background:
+    linear-gradient(rgba(30,25,10,.75), rgba(20,18,8,.85)),
+    url("https://i.pinimg.com/736x/36/ac/d9/36acd93836efd3112ccb3f4e4d9d6109.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.02) 0px,
+        rgba(255,255,255,.02) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+
+    pointer-events:none;
+    opacity:.35;
+}
+
+@keyframes flicker{
+
+    0%,18%,22%,25%,53%,57%,100%{
+        opacity:1;
+    }
+
+    20%,24%,55%{
+        opacity:.85;
+    }
+}
+
+.wrapper{
+
+    width:min(900px,95%);
+    margin:40px auto;
+
+    padding:30px;
+
+    background:rgba(40,35,15,.78);
+
+    border:2px solid rgba(220,210,140,.25);
+
+    backdrop-filter:blur(2px);
+
+    box-shadow:
+    0 0 30px rgba(0,0,0,.5),
+    0 0 100px rgba(255,240,120,.05);
+
+    animation:flicker 7s infinite;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.logo{
+
+    width:120px;
+    height:120px;
+
+    margin:auto;
+    margin-bottom:20px;
+
+    border-radius:50%;
+    overflow:hidden;
+
+    border:3px solid #bcb68c;
+
+    background:#4e4a2d;
+
+    box-shadow:0 0 20px rgba(255,255,150,.15);
+}
+
+
+.logo img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+h1{
+    color:#ece7c4;
+    font-size:2.3rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.status{
+    margin-top:10px;
+    color:#b9b28d;
+    font-size:.9rem;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.section-title{
+
+    color:#efe7a3;
+
+    margin-bottom:10px;
+
+    border-bottom:1px solid #81794f;
+
+    padding-bottom:5px;
+}
+
+
+.box{
+
+    background:rgba(0,0,0,.25);
+
+    border-left:4px solid #a8a16f;
+
+    padding:15px;
+
+    line-height:1.7;
+}
+.dossier{
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(255,240,120,.02),
+        rgba(0,0,0,.15)
+    );
+
+    border-left:4px solid #d8d29d;
+
+    box-shadow:
+        inset 0 0 20px rgba(255,255,120,.04),
+        0 0 15px rgba(255,240,120,.04);
+
+    padding:20px;
+}
+
+.dossier::before{
+
+    content:"ARCHIVO RECUPERADO";
+
+    position:absolute;
+
+    top:-10px;
+    right:15px;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    color:#9f9968;
+
+    background:rgba(40,35,15,.95);
+
+    padding:2px 8px;
+}
+ul{
+    padding-left:25px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+.registro{
+
+    display:inline-block;
+
+    padding:4px 10px;
+
+    margin-bottom:8px;
+
+    border:1px solid rgba(220,210,140,.35);
+
+    background:rgba(120,110,50,.18);
+
+    color:#f5efb8;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    font-size:.85rem;
+}
+
+.linkedin{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:12px 20px;
+
+    text-decoration:none;
+
+    color:#ffffd0;
+
+    border:1px solid #bdb789;
+
+    background:#555032;
+
+    transition:.3s;
+}
+
+.linkedin:hover{
+
+    background:#6b6541;
+
+    box-shadow:0 0 15px rgba(255,255,180,.25);
+}
+
+.warning{
+
+    margin-top:40px;
+
+    color:#8b0000;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    text-align:right;
+
+    text-shadow:0 0 8px red;
+}
+
+.coordinates{
+
+    margin-top:40px;
+
+    opacity:.4;
+
+    font-size:.75rem;
+
+    text-align:center;
+}
+
+@media(max-width:700px){
+
+    h1{
+        font-size:1.6rem;
+    }
+
+    .wrapper{
+        padding:20px;
+    }
+
+    .logo{
+        width:90px;
+        height:90px;
+        font-size:40px;
+    }
+}
+
+
+.contenedor{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:20px;
+}
+
+.columna{
+
+    background:rgba(0,0,0,.25);
+
+    border-left:4px solid #a8a16f;
+
+    padding:15px;
+
+    min-height:220px;
+
+    color:#d9d6b8;
+
+    box-shadow:
+    inset 0 0 10px rgba(255,255,150,.03);
+
+    overflow-wrap:break-word;
+}
+
+.columna h3{
+
+    color:#efe7a3;
+
+    margin-bottom:12px;
+
+    border-bottom:1px solid #81794f;
+
+    padding-bottom:5px;
+
+    text-transform:uppercase;
+}
+
+.columna p{
+    line-height:1.7;
+}
+
+
+@media(max-width:700px){
+
+    .contenedor{
+        grid-template-columns:1fr;
+    }
+
+    
+}
+
+
+.extra-boxes{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:stretch;
+
+    gap:30px;
+
+    margin-top:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.curso{
+
+    display:inline-block;
+
+    margin:8px 0 3px;
+
+    padding:4px 10px;
+
+    background:rgba(95,85,35,.35);
+
+    border:1px solid rgba(190,180,110,.35);
+
+    color:#f1ebb5;
+
+    font-size:.9rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    box-shadow:
+        inset 0 0 8px rgba(255,255,120,.03);
+
+}
+
+.docente{
+
+    margin-left:12px;
+
+    color:#cfc89b;
+
+    line-height:1.7;
+}
+
+.docente-link{
+
+    display:inline-block;
+
+    margin-left:12px;
+
+    margin-bottom:12px;
+
+    color:#9bb4d8;
+
+    text-decoration:none;
+
+    font-size:.85rem;
+
+    letter-spacing:1px;
+}
+
+.docente-link:hover{
+
+    color:#d6e6ff;
+
+    text-shadow:0 0 8px rgba(120,180,255,.5);
+}
+
+.extra-card{
+
+    width:380px;
+
+    max-width:100%;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.18);
+
+    border-left:3px solid rgba(168,161,111,.5);
+
+    color:#d9d6b8;
+
+    opacity:.85;
+
+    box-shadow:
+        inset 0 0 10px rgba(255,255,150,.03);
+
+}
+
+
+
+.extra-card h3{
+
+    color:#d8d29d;
+
+    margin-bottom:12px;
+
+    padding-bottom:5px;
+
+    border-bottom:1px solid rgba(129,121,79,.5);
+
+    text-transform:uppercase;
+
+    font-size:0.95rem;
+
+}
+
+.backrooms-monitor{
+
+    margin:40px auto;
+
+    max-width:850px;
+
+    padding:18px;
+
+    background:rgba(20,18,8,.85);
+
+    border:2px solid rgba(180,170,100,.35);
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,.6),
+        inset 0 0 25px rgba(255,255,120,.04);
+
+    position:relative;
+}
+
+.backrooms-monitor::before{
+
+    content:"CAMARA DE SEGURIDAD // NIVEL ?";
+
+    position:absolute;
+
+    top:-10px;
+    left:15px;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    color:#b8b07a;
+
+    background:rgba(20,18,8,.95);
+
+    padding:0 8px;
+}
+
+.backrooms-monitor img{
+
+    width:100%;
+
+    display:block;
+
+    border:1px solid rgba(255,240,120,.15);
+
+    filter:
+        contrast(1.1)
+        brightness(.9)
+        saturate(.8);
+}
+
+.monitor-caption{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:#9d9666;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+.extra-card p{
+
+    line-height:1.7;
+
+}
+
+@media(max-width:700px){
+
+    .extra-card{
+        width:100%;
+    }
+
+}
+.observaciones p{
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+}
+
+.observaciones p::before{
+
+    content:"";
+
+    width:20px;
+    height:20px;
+
+    flex-shrink:0;
+
+    background-image:url("https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png");
+
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.observaciones ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.observaciones li{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:16px;
+}
+
+.observaciones img{
+
+    width:28px;
+    height:28px;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 0 5px rgba(255,220,100,.4));
+}
+
+.observaciones a{
+
+    text-decoration:none;
+
+    font-family:"Courier New", monospace;
+
+    font-size:1.05rem;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#f5eeb8;
+
+    padding:6px 12px;
+
+    border-left:3px solid #bcae59;
+
+    background:rgba(70,60,25,.35);
+
+    transition:.3s;
+}
+
+.observaciones a:hover{
+
+    color:#fff7c7;
+
+    background:rgba(110,95,35,.45);
+
+    text-shadow:0 0 10px rgba(255,255,180,.8);
+
+    transform:translateX(5px);
+}
+
+
+.social-final{
+
+    margin-top:50px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+}
+
+.social-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    min-width:260px;
+
+    padding:14px 22px;
+
+    text-decoration:none;
+
+    color:#efe7a3;
+
+    background:rgba(50,45,20,.85);
+
+    border:2px solid #8f8856;
+
+    box-shadow:
+        0 0 15px rgba(255,240,120,.08),
+        inset 0 0 10px rgba(255,255,180,.03);
+
+    transition:.3s;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-family:Consolas, monospace;
+
+    position:relative;
+}
+
+.social-btn::before{
+
+    content:"[ ENLACE EXTERNO ]";
+
+    position:absolute;
+
+    top:-10px;
+
+    left:12px;
+
+    font-size:9px;
+
+    color:#a8a16f;
+
+    background:rgba(40,35,15,.95);
+
+    padding:0 5px;
+}
+
+.social-btn img{
+
+    width:34px;
+
+    height:34px;
+
+    object-fit:contain;
+
+    image-rendering:pixelated;
+}
+
+.social-btn:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#d6cf8e;
+
+    color:#fff9c8;
+
+    box-shadow:
+        0 0 25px rgba(255,240,120,.25),
+        0 0 50px rgba(255,240,120,.08);
+}
+
+
+.linkedin-btn:hover{
+
+    text-shadow:0 0 10px rgba(120,180,255,.8);
+}
+
+
+.github-btn:hover{
+
+    text-shadow:0 0 10px rgba(255,255,255,.6);
+}
+
+@media(max-width:700px){
+
+    .social-btn{
+
+        width:100%;
+    }
+
+}
+.frase-oculta{
+
+    display:block;
+
+    width:100%;
+
+    margin:80px 0 20px;
+
+    text-align:center;
+
+    color:#5a0000;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    text-decoration:none;
+
+    opacity:.45;
+
+    text-shadow:0 0 5px rgba(255,0,0,.2);
+
+    transition:.4s;
+}
+
+.frase-oculta:hover{
+
+    color:#8b0000;
+
+    opacity:.8;
+
+    text-shadow:0 0 10px rgba(255,0,0,.5);
+}
+
+
+
+.header{
+    .mini-monitor{
+    width:200px;
+
+    background:rgba(20,18,8,.88);
+    border:1px solid rgba(180,170,100,.4);
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.6),
+        inset 0 0 15px rgba(255,120,255,.05);
+
+    padding:10px;
+    font-family:Consolas, monospace;
+
+    color:#e7dfb2;
+}
+}
+
+.mini-monitor{
+    position:absolute;
+    right:-220px;  
+    top:10px;
+
+    width:200px;
+
+    background:rgba(20,18,8,.88);
+    border:1px solid rgba(180,170,100,.4);
+    box-shadow:
+        0 0 25px rgba(0,0,0,.6),
+        inset 0 0 15px rgba(255,120,255,.05);
+
+    padding:10px;
+    font-family:Consolas, monospace;
+
+    color:#e7dfb2;
+}
+
+.mini-title{
+    font-size:9px;
+    letter-spacing:2px;
+    color:#b8b07a;
+    margin-bottom:6px;
+    text-transform:uppercase;
+}
+
+.mini-img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+
+    border:1px solid rgba(255,200,255,.2);
+
+    filter:contrast(1.1) saturate(1.2) hue-rotate(-20deg);
+}
+
+.mini-text{
+    margin-top:8px;
+    font-size:11px;
+    line-height:1.4;
+    color:#cfc79a;
+}
+
+.mini-text span{
+    color:#ffb7ff;
+    text-shadow:0 0 8px rgba(255,100,255,.4);
+}
+
+.mini-btn{
+    display:block;
+    margin-top:10px;
+
+    padding:6px;
+
+    text-align:center;
+    font-size:10px;
+
+    text-decoration:none;
+
+    color:#fff2c2;
+
+    border:1px solid rgba(255,180,255,.25);
+    background:rgba(120,60,120,.25);
+
+    transition:.3s;
+}
+
+.mini-btn:hover{
+    background:rgba(180,90,180,.35);
+    box-shadow:0 0 12px rgba(255,120,255,.25);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="header">
+
+        <div class="logo">
+            <img src="https://i.pinimg.com/1200x/21/fb/92/21fb925baa26a67e270b534b3274d054.jpg">
+        </div>
+        <div class="mini-monitor">
+    <div class="mini-title">AUDIO STREAM // CMD</div>
+
+    <img class="mini-img" src="https://media.artsper.com/artwork/1961232_1_m.jpg" alt="album">
+
+    <div class="mini-text">
+        este usuario está escuchando<br>
+        <span>Plastic Love</span>
+    </div>
+
+    <a class="mini-btn"
+       href="https://youtu.be/lARZdPkHpVc?si=pGsQafosr9QFq4Kr&t=378"
+       target="_blank">
+        ▶ abrir reproductor
+    </a>
+</div>
+        <h1>Felipe Leite Miranda</h1>
+
+        <div class="status">
+            BRASIL • PERU
+        </div>
+        
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+           DESCRIPCIÓN PERSONAL
+        </div>
+
+        <div class="box dossier">
+            <p><span class="registro">[Este sítio fué hecho como proyecto simple para apresentar]</span></p>
+            >> Bienvenidos, Mi nombre es Felipe Leite Miranda, tengo 21 años y estudio Ciencias de la Computación en la Universidad Católica de la San Pablo.
+            Soy brasileño y actualmente vivo 2 años en Perú, país que me quedaré hasta que termine mis estudios.
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <div class="section-title">
+            CARRERA
+        </div>
+
+        <div class="box dossier">
+           <p><span class="registro">[CIENCIAS DE LA COMPUTACIÓN]</span></p>
+           <p> >> Grupo CCOMP 1-2.</p>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            HABILIDADES
+        </div>
+
+        <div class="box">
+           <p> + Arte en papel y digital, por lo qual hacia comisiones anteriormente. Mi estilo se basa en Realismo como Alex Ross o Ayami Kojima, Me gusta dibujar edificios antiguos ya que alguna vez quise ser arquitecto, pero tanbién me gusta el surrealismo y arte liminal de estilo weirdcore o dreamcore. Mis artistas surrealistas favoritos son Brent Wong y Markus Matthias Kruger </p>
+           + Consigo hablar fluentemente y entender 3 idiomas: Portugués, Inglés y Español [Estoy estudiando Francés].
+           <p> + Sé usar Blender para modelar en 3D [Nivel Iniciante]. </p>
+           + Uso FLstudio para estudiar y producir musica [Nivel Iniciante].
+           <p> + Sé manejar carro en carreteras tanto de Perú como Brasil.</p>
+           + Tengo conocimiento artístico, por lo qual en muchos juegos, apps de dibujo y blender, me encanta crear proyectos Barrocos, de realismo
+           o lo que gire entorno de Europa Medieval, Renacentista y Arquitectura Maximalista y Art Deco.
+        </div>
+    </div>
+
+<div class="section">
+
+    <div class="section-title">
+        REGISTROS ADICIONALES
+    </div>
+
+    <div class="contenedor">
+
+        <div class="columna">
+            <h3>Hobbies</h3>
+            <p>+ Estudiar matemática y anatomia humana.</p>
+            + Aprender aún mas idiomas, siendo mi proximo foco después del francés, el alemán.
+            <p>+ Aprender lo maximo que pueda sobre lo que me guste, sea programación, arte o hasta mismo matemática y biologia. </p>
+            + Jugar Videojuegos, siendo mi franquicia favorita todos los juegos de Castlevania.
+        </div>
+
+        <div class="columna">
+            <h3>Me Gusta</h3>
+            + Casi todo estilo músical, preferiblemente los que son bien alternativos a los generos populares, siendo mis favoritos el Eurodance[nightcore], Metal Neoclásico, Musica Clásica o Samba y Jazz Brasileño.
+            <p> + Leer HQs de Heroes [mi favorito es Superman] o libros de ocultismo.</p>
+            + Jugar juegos con posibilidad de sandbox para poder construir o hacer mi arte.
+            <p> + Moda de ropas antiguas para vestirme.</p>
+        </div>
+
+        <div class="columna">
+            <h3>No me gusta</h3>
+            + Gente dramática o escandalosa, prefiero el silencio o lo que sea calmo y siga una moral o un sistema.
+            <p>+ Peleas desnecesárias por motivos patéticos, como na aceptar una ley simple de su proprio país.</p>
+            <p>+ HUMANIDADES, solo historia logra gustarme, filosofia u otros temas parecidos me hacen muy confusos o nada interesantes debido a
+                una condición mental que tengo.
+         </div>
+    </div>
+
+</div>
+
+<div class="backrooms-monitor">
+
+    <img src="https://i.redd.it/8bk8px5jlb371.gif" alt="Backrooms">
+
+    <div class="monitor-caption">
+        [ TRANSMISIÓN INESTABLE ]
+    </div>
+
+</div>
+
+<div class="section">
+
+    <div class="section-title">
+        INFORMACIÓN COMPLEMENTARIA
+    </div>
+
+    <div class="extra-boxes">
+
+       <div class="extra-card">
+
+    <h3>Cursos y Docentes</h3>
+
+    <p></p><span class="curso">INTRODUCCIÓN A COMPUTACIÓN</span>
+
+    <div class="docente">
+        >> Ernesto Cuadros Vargas
+    </div>
+
+    <a class="docente-link"
+       href="https://www.linkedin.com/in/ecuadrosv/"
+       target="_blank">
+       LinkedIn
+    </a>
+
+    <p></p><span class="curso">FUNDAMENTOS DE PROGRAMACIÓN</span>
+
+    <div class="docente">
+        >> Vizconde La Motta Kelly
+    </div>
+
+    <a class="docente-link"
+       href="https://www.linkedin.com/in/kelly-vizconde-la-motta-3a57a4143/"
+       target="_blank">
+       LinkedIn
+    </a>
+    <p></p><span class="curso">INTRODUCCIÓN A LA VIDA UNIVERSTARIA</span>
+
+    <div class="docente">
+        >> Quiroz Pacheco Claudia Lucia
+    </div>
+
+    <p></p><span class="curso">LÓGICA</span>
+
+    <div class="docente">
+        >> Byrne Rivera Yahaira
+    </div>
+
+    <a class="docente-link"
+       href="https://www.linkedin.com/in/yahaira-byrne-rivera-274201221/"
+       target="_blank">
+       LinkedIn
+    </a>
+    
+    <p></p><span class="curso">COMUNICACIÓN</span>
+
+    <div class="docente">
+        >> Rodriguez Cruz Angel David
+    </div>
+    
+    <p></p><span class="curso">FUNDAMENTOS MATEMÁTICOS PARA COMPUTACIÓN</span>
+
+    <div class="docente">
+        >> Suarez Calcina Sabrina Gabriela
+    </div>
+
+</div>
+
+        <div class="extra-card observaciones">
+    <h3>Site dos Amiguinhos</h3>
+
+    <ul>
+
+        <li>
+            <img src="https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png" alt="">
+            <a href="https://angelfabianramosmunoz.github.io/" target="_blank">
+                Angel Fabian
+            </a>
+        </li>
+
+        <li>
+            <img src="https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png" alt="">
+            <a href="https://bryanalencastre.github.io/Bryan-Alencastre/" target="_blank">
+                Bryan Alencastre
+            </a>
+        </li>
+
+        <li>
+            <img src="https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png" alt="">
+            <a href="https://yulvillena-source.github.io/Yul_Villena/" target="_blank">
+                Yul Villena
+            </a>
+        </li>
+
+        <li>
+            <img src="https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png" alt="">
+            <a href="https://christiancv-u.github.io/Christian-Alonso-Valdivia-Zu-iga/" target="_blank">
+                Christian Alonzo
+            </a>
+        </li>
+
+        <li>
+            <img src="https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png" alt="">
+            <a href="https://ackyul.github.io/yoshuanunez.github.io/" target="_blank">
+                Ioxua Nunez
+            </a>
+        </li>
+
+        <li>
+            <img src="https://marketplace.canva.com/SChOE/MAGzFUSChOE/1/tl/canva-3d-alert-sign%2C-caution-icon%2C-attention-mark%2C-alert-MAGzFUSChOE.png" alt="">
+            <a href="https://smhir.github.io/Rodrigo-Samhir-Mario-Cueva-Zenteno/" target="_blank">
+                Rodrigo Samhir
+            </a>
+        </li>
+    </ul>
+</div>
+
+    
+
+</div>
+
+<div class="coordinates">
+    <div class="social-final">
+
+    <a class="social-btn linkedin-btn"
+       href="https://www.linkedin.com/in/felipe-miranda-45a7ab2a7/"
+       target="_blank">
+
+        <img src="https://images.icon-icons.com/2873/PNG/512/linkedin_pixel_logo_icon_181925.png" alt="">
+        Mi LinkedIn Abandonado
+
+    </a>
+
+    <a class="social-btn github-btn"
+       href="https://github.com/radicallix-radix-radix"
+       target="_blank">
+
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/027/190/720/small/pixel-art-black-cat-cartoon-head-icon-png.png" alt="">
+        Mi Cuenta en GitHub
+
+    </a>
+
+</div>
+</div>
+<a href="https://www.google.com/maps/place/Elliðaey/@63.4639669,-20.1995319,14.5z/data=!4m10!1m2!2m1!1slliðaey+island!3m6!1s0x48d70f7439a4e2c7:0xae3170fc33411598!8m2!3d63.4643719!4d-20.1755721!15sCg9sbGnDsGFleSBpc2xhbmRaESIPbGxpw7BhZXkgaXNsYW5kkgEGaXNsYW5kmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU5FZG5ZM1FreFJFQUXgAQD6AQQIABAQ!16s%2Fm%2F0czdk49?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
+   class="frase-oculta"
+   target="_blank">
+    [ MEU LUGAR É AQUI ]
+</a>
+</div>
+</body>
+</html>
